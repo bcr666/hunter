@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>WoD Character Sheet</title>
+	<title>WoD - Hunter - Character Sheet</title>
 	<link rel="stylesheet" href="styles.css?v=<?= filemtime('styles.css') ?>">
 </head>
 <body data-page="character">
