@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WoD Experience</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="experience">
+	<header class="site-header">
+	<div class="header-inner">
+		<div class="brand">
+			<div class="brand-title">World of Darkness</div>
+			<div class="brand-subtitle">Mobile Character Sheet</div>
+		</div>
+		<nav class="nav">
+			<a href="index.php" data-page="character">Sheet</a>
+			<a href="notes.html" data-page="notes">Notes</a>
+			<a href="experience.html" data-page="experience">XP</a>
+		</nav>
+	</div>
+</header>
+	<main class="app-shell">
+		<section class="hero-card">
+			<h1 class="character-name">Experience</h1>
+			<p class="brand-subtitle">Track XP awards and expenditures.</p>
+		</section>
+
+		<section class="card">
+			<div class="character-meta">
+				<div>
+					<label class="label" for="xpDate">Date</label>
+					<input id="xpDate" type="date">
+				</div>
+				<div>
+					<label class="label" for="xpAmount">XP Change</label>
+					<input id="xpAmount" type="number" placeholder="-6 or 3">
+				</div>
+			</div>
+
+			<label class="label" for="xpTitle" style="margin-top: 0.75rem;">Description</label>
+			<input id="xpTitle" placeholder="Example: Raised Intimidation to 3">
+
+			<label class="label" for="xpNotes" style="margin-top: 0.75rem;">Notes</label>
+			<textarea id="xpNotes" placeholder="Optional details..."></textarea>
+
+			<div class="form-actions">
+				<button id="saveXpBtn">Save XP Entry</button>
+				<button class="secondary" id="clearXpBtn">Clear</button>
+			</div>
+		</section>
+
+		<section class="card" style="margin-top: 1rem;">
+			<h2>XP Summary</h2>
+			<div class="advantage-grid">
+				<div class="advantage"><span class="label">Earned</span><strong id="xpEarned">0</strong></div>
+				<div class="advantage"><span class="label">Spent</span><strong id="xpSpent">0</strong></div>
+				<div class="advantage"><span class="label">Available</span><strong id="xpAvailable">0</strong></div>
+			</div>
+		</section>
+
+		<section class="entry-list" id="xpList"></section>
+	</main>
+	<script src="experience.js"></script>
+</body>
+</html>

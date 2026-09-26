@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WoD Notes</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="notes">
+	<header class="site-header">
+	<div class="header-inner">
+		<div class="brand">
+			<div class="brand-title">World of Darkness</div>
+			<div class="brand-subtitle">Mobile Character Sheet</div>
+		</div>
+		<nav class="nav">
+			<a href="index.php" data-page="character">Sheet</a>
+			<a href="notes.html" data-page="notes">Notes</a>
+			<a href="experience.html" data-page="experience">XP</a>
+		</nav>
+	</div>
+</header>
+	<main class="app-shell">
+		<section class="hero-card">
+			<h1 class="character-name">Notes</h1>
+			<p class="brand-subtitle">Session notes, clues, NPCs, weird dreams, and terrible ideas.</p>
+		</section>
+
+		<section class="card">
+			<label class="label" for="noteTitle">Title</label>
+			<input id="noteTitle" placeholder="Example: The woman with the bird">
+
+			<label class="label" for="noteText" style="margin-top: 0.75rem;">Note</label>
+			<textarea id="noteText" placeholder="Write the note here..."></textarea>
+
+			<div class="form-actions">
+				<button id="saveNoteBtn">Save Note</button>
+				<button class="secondary" id="clearNoteBtn">Clear</button>
+			</div>
+		</section>
+
+		<section class="entry-list" id="notesList"></section>
+	</main>
+	<script src="notes.js"></script>
+</body>
+</html>
