@@ -98,8 +98,8 @@
 				"dots": 2
 			},
 			{
-				"name": "Blessings",
-				"dots": 1
+				"name": "Benedictions",
+				"dots": 2
 			},
 			{
 				"name": "Fast Reflexes",
@@ -112,6 +112,10 @@
 			{
 				"name": "Resources",
 				"dots": 3
+			},
+			{
+				"name": "Safehouse",
+				"dots": 1
 			},
 			{
 				"name": "Status (Malleus Maleficarum)",
@@ -301,8 +305,8 @@
 			, {
 				"date": "2026-08-15",
 				"amount": -2,
-				"title": "Blessings 1",
-				"notes": "Purchased Blessings 1"
+				"title": "Benedictions 1",
+				"notes": "Purchased Benedictions 1"
 			}
 			, {
 				"date": "2026-08-15",
@@ -363,6 +367,18 @@
 				"amount": 5,
 				"title": "Earned",
 				"notes": "Game Night"
+			}
+			, {
+				"date": "2026-09-26",
+				"amount": -4,
+				"title": "Benedictions 2",
+				"notes": "Raised Benedictions from 1 to 2"
+			}
+			, {
+				"date": "2026-09-26",
+				"amount": -2,
+				"title": "Safehouse",
+				"notes": "Purchased Safehouse 1"
 			}
 		]
 	}
