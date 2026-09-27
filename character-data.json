@@ -358,6 +358,12 @@
 				"title": "Specialization",
 				"notes": "Specialization: Academics - Catholic Church"
 			}
+			, {
+				"date": "2026-09-26",
+				"amount": 5,
+				"title": "Earned",
+				"notes": "Game Night"
+			}
 		]
 	}
 }
