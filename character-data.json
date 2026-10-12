@@ -380,6 +380,18 @@
 				"title": "Safehouse",
 				"notes": "Purchased Safehouse 1"
 			}
+			, {
+				"date": "2026-10-10",
+				"amount": 5,
+				"title": "Earned",
+				"notes": "Game Night"
+			}
+			, {
+				"date": "2026-10-10",
+				"amount": -6,
+				"title": "Benedictions 1",
+				"notes": "Raised Benedictions from 2 to 3"
+			}
 		]
 	}
 }
