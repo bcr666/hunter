@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WoD Spells</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="spells"><header class="site-header">
+	<div class="header-inner">
+		<div class="brand">
+			<div class="brand-title">World of Darkness</div>
+			<div class="brand-subtitle">Mobile Character Sheet</div>
+		</div>
+		<nav class="nav">
+			<a href="index.php" data-page="character">Sheet</a>
+			<a href="spells.html" data-page="spells">Spells</a>
+			<a href="notes.html" data-page="notes">Notes</a>
+			<a href="experience.html" data-page="experience">XP</a>
+		</nav>
+	</div>
+</header>
+<main class="app-shell">
+ <section class="hero-card"><h1 class="character-name">Spells</h1><p class="brand-subtitle" id="spellSubtitle">Rory’s spell reference</p></section>
+ <section class="card spell-filters" aria-label="Spell filters">
+  <div><label class="label" for="spellScope">Show</label><select id="spellScope"><option value="character">Rory’s spells</option><option value="all">All spells</option></select></div>
+  <div><label class="label" for="arcanaFilter">Arcanum</label><select id="arcanaFilter"><option value="">All Arcana</option></select></div>
+  <div><label class="label" for="spellSearch">Search</label><input id="spellSearch" type="search" placeholder="Spell name or text"></div>
+ </section>
+ <p id="spellCount" role="status"></p><p id="spellWarning" role="status" hidden></p>
+ <section class="entry-list" id="spellList" aria-label="Spell results"><p>Loading spells...</p></section>
+</main><script src="app.js"></script><script src="spells.js"></script></body></html>

@@ -6,8 +6,34 @@
 		"concept": "Hard-luck welder with a weird bloodline",
 		"virtue": "Faith",
 		"vice": "Wrath",
-		"faction": "Mortal",
+		"faction": "Mage",
 		"group": "",
+		"mage": {
+    "shadowName": "",
+    "path": "",
+    "order": "",
+    "legacy": "",
+    "cabal": "",
+    "gnosis": null,
+    "wisdom": null,
+    "mana": {
+        "current": null,
+        "max": null
+    },
+    "arcana": {
+        "Death": null,
+        "Fate": null,
+        "Forces": null,
+        "Life": null,
+        "Matter": null,
+        "Mind": null,
+        "Prime": null,
+        "Space": null,
+        "Spirit": null,
+        "Time": null
+    }
+},
+		"spells": [],
 		"attributes": {
 			"mental": {
 				"Intelligence": 3,

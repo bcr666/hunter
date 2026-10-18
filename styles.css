@@ -495,3 +495,16 @@ button.secondary {
 		padding: 0.9rem;
 	}
 }
+
+/* Mage sheet and spell reference */
+.mage-grid .trait-row strong { text-align: right; overflow-wrap: anywhere; }
+.spell-filters, .spell-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.spell-details dd { margin: 0; }
+.spell-text { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
+.mana-summary { font-size: 1.8rem; font-weight: 800; }
+button:disabled { opacity: 0.45; cursor: default; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 760px) {
+ .nav { grid-template-columns: repeat(4, 1fr); }
+ .spell-filters, .spell-details { grid-template-columns: 1fr; }
+}

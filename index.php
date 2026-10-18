@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>WoD - Hunter - Character Sheet</title>
+	<title>WoD - Mage - Character Sheet</title>
 	<link rel="stylesheet" href="styles.css?v=<?= filemtime('styles.css') ?>">
 </head>
 <body data-page="character">
@@ -15,6 +15,7 @@
 		</div>
 		<nav class="nav">
 			<a href="index.php" data-page="character">Sheet</a>
+			<a href="spells.html" data-page="spells">Spells</a>
 			<a href="notes.html" data-page="notes">Notes</a>
 			<a href="experience.html" data-page="experience">XP</a>
 		</nav>
@@ -24,6 +25,8 @@
 		<section class="hero-card" id="characterHero">
 			<p>Loading character...</p>
 		</section>
+
+		<section class="grid mage-grid" id="mageGrid" aria-label="Mage traits"></section>
 
 		<section class="grid" id="attributesGrid"></section>
 		<section class="grid" id="skillsGrid"></section>

@@ -59,8 +59,8 @@ function calculateAdvantages(character) {
 	const athletics = getTraitValue(skills, "Athletics");
 
 	const size = Number(manualAdvantages.Size) || 5;
-	const moralityName = Object.prototype.hasOwnProperty.call(manualAdvantages, "Integrity") ? "Integrity" : "Morality";
-	const morality = Number(manualAdvantages[moralityName]) || 7;
+	const moralityName = character.mage ? "Wisdom" : Object.prototype.hasOwnProperty.call(manualAdvantages, "Integrity") ? "Integrity" : "Morality";
+	const morality = character.mage ? (character.mage.wisdom ?? "—") : (manualAdvantages[moralityName] ?? 7);
 	const speedFactor = Number(manualAdvantages.SpeedFactor || manualAdvantages["Speed Factor"]) || 5;
 
 	return {
@@ -304,7 +304,8 @@ function renderHealthBar(damage, maxHealth) {
 
 function loadWillpowerState(character, maxWillpower) {
 	const key = `willpower-${character.name}`;
-	const saved = Number(localStorage.getItem(key));
+	const stored = localStorage.getItem(key);
+	const saved = stored === null ? NaN : Number(stored);
 
 	if (!Number.isNaN(saved) && saved >= 0) {
 		return Math.min(saved, maxWillpower);
@@ -366,6 +367,7 @@ function initWillpowerTracker(character, maxWillpower) {
 
 function renderCharacter(data) {
 	const c = data.character;
+	renderMage(c);
 
 	document.getElementById("characterHero").innerHTML = `
 		<h1 class="character-name">${c.name}</h1>
@@ -435,8 +437,51 @@ function renderCharacter(data) {
 
 setActiveNav();
 
-loadCharacter()
+if (document.body.dataset.page === "character") loadCharacter()
 	.then(renderCharacter)
 	.catch(error => {
 		document.getElementById("characterHero").innerHTML = `<p>${error.message}</p>`;
 	});
+
+
+function escapeHtml(value) {
+ return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
+
+function renderMage(character) {
+ const mage = character.mage;
+ const grid = document.getElementById("mageGrid");
+ if (!mage) { grid.hidden = true; return; }
+ const fields = {"Shadow Name": mage.shadowName, Path: mage.path, Order: mage.order,
+  Legacy: mage.legacy, Cabal: mage.cabal, Gnosis: mage.gnosis};
+ grid.innerHTML = `<section class="card"><h2>Mage</h2>${Object.entries(fields).map(([name,value]) =>
+  `<div class="trait-row"><span>${name}</span><strong>${escapeHtml(value ?? "") || "Unassigned"}</strong></div>`).join("")}</section>
+  <section class="card"><h2>Arcana</h2>${Object.entries(mage.arcana || {}).map(([name,value]) =>
+  `<div class="trait-row"><span>${escapeHtml(name)}</span>${value == null ? '<span class="brand-subtitle">Unassigned</span>' : dotString(value)}</div>`).join("")}</section>
+  <section class="card"><h2>Mana</h2><div id="manaTracker"></div></section>`;
+ const tracker = document.getElementById("manaTracker");
+ const max = mage.mana?.max;
+ if (!Number.isInteger(max) || max < 0) {
+  tracker.textContent = "Mana capacity has not been assigned.";
+  return;
+ }
+ const key = `mana-${character.name}`;
+ let saved;
+ try { saved = localStorage.getItem(key); } catch { saved = null; }
+ let current = Math.max(0, Math.min(max, Number(saved ?? mage.mana.current ?? max) || 0));
+ tracker.innerHTML = `<p class="mana-summary" id="manaSummary" aria-live="polite"></p>
+  <div class="form-actions"><button type="button" id="spendMana">Spend 1</button><button type="button" id="restoreMana">Restore 1</button></div>`;
+ const render = () => {
+  document.getElementById("manaSummary").textContent = `${current} / ${max}`;
+  document.getElementById("spendMana").disabled = current === 0;
+  document.getElementById("restoreMana").disabled = current === max;
+ };
+ const change = amount => {
+  current = Math.max(0, Math.min(max, current + amount));
+  try { localStorage.setItem(key, String(current)); } catch (error) { console.warn("Could not save Mana.", error); }
+  render();
+ };
+ document.getElementById("spendMana").onclick = () => change(-1);
+ document.getElementById("restoreMana").onclick = () => change(1);
+ render();
+}

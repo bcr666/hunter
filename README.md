@@ -28,3 +28,50 @@ This repository is public, but the site is tailored to my own character and game
 ## Acknowledgments
 
 Hunter: The Vigil belongs to its respective rights holders. This is an unofficial personal fan project and is not affiliated with or endorsed by the game's publisher.
+
+## Mage sheet
+
+The sheet supports Rory’s transition to Mage: The Awakening 1st edition.
+His custom Path, Order, and other Mage choices are still being developed. Existing Hunter traits,
+equipment, notes, and XP are preserved. `character.mage` holds Shadow Name, Path,
+Order, Legacy, Cabal, Gnosis, Wisdom, Mana, and all ten Arcana. Undecided ratings
+are `null` and undecided text is empty. Zero means an assigned rating of zero.
+Set Wisdom explicitly; the old Morality value is retained in the data for reference.
+Mana capacity is explicit rather than calculated so the sheet does not assume an edition.
+Once `mana.max` is assigned, Spend/Restore controls track current Mana in this browser,
+starting from `mana.current` (or full if omitted). As with Health and Willpower,
+local tracker changes do not modify the JSON file.
+
+### Spell catalog
+
+`spells.json` contains `{ "spells": [] }`. Add entries using stable, unique IDs:
+
+```json
+{
+  "id": "example-spell",
+  "name": "Example spell (replace with your spell)",
+  "arcana": { "Forces": 2, "Prime": 1 },
+  "practice": "",
+  "action": "",
+  "duration": "",
+  "range": "",
+  "cost": "",
+  "primaryFactor": "",
+  "dicePool": "",
+  "withstand": "",
+  "description": "Your spell summary or text goes here.",
+  "notes": "Optional casting notes.",
+  "source": "Book and page reference"
+}
+```
+
+This is a schema example, not a game spell. Add `"example-spell"` to
+`character.spells` in `character-data.json` to include it in Rory’s list.
+IDs stay fixed when a display name changes. Multi-Arcanum spells appear under
+each of their Arcana filters. The Spells tab defaults to Rory’s list and can also
+show the whole catalog; search and Arcana filters work together. Missing referenced
+IDs are reported on the page. No spells or Mage ratings have been invented for Rory.
+The catalog starts empty pending his spell choices.
+
+Serve the repository through PHP as before; JSON fetches require an HTTP server.
+Include `spells.html`, `spells.js`, and `spells.json` in deployments.
