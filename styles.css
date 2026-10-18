@@ -509,4 +509,5 @@ button:disabled { opacity: 0.45; cursor: default; }
  .spell-filters, .spell-details { grid-template-columns: 1fr; }
 }
 
-.arcana-affinity { display: block; color: var(--muted); font-size: 0.75rem; text-transform: capitalize; }
+.arcana-group + .arcana-group { margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--line); }
+.arcana-group h3 { margin: 0 0 0.35rem; color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }

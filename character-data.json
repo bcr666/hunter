@@ -33,16 +33,16 @@
     "Time": "common"
 },
     "arcana": {
-        "Death": null,
-        "Fate": null,
-        "Forces": null,
-        "Life": null,
-        "Matter": null,
-        "Mind": null,
-        "Prime": null,
-        "Space": null,
-        "Spirit": null,
-        "Time": null
+        "Death": 0,
+        "Fate": 0,
+        "Forces": 0,
+        "Life": 0,
+        "Matter": 0,
+        "Mind": 0,
+        "Prime": 0,
+        "Space": 0,
+        "Spirit": 0,
+        "Time": 0
     }
 },
 		"spells": [],

@@ -456,8 +456,12 @@ function renderMage(character) {
   Legacy: mage.legacy, Cabal: mage.cabal, Gnosis: mage.gnosis};
  grid.innerHTML = `<section class="card"><h2>Mage</h2>${Object.entries(fields).map(([name,value]) =>
   `<div class="trait-row"><span>${name}</span><strong>${escapeHtml(value ?? "") || "Unassigned"}</strong></div>`).join("")}</section>
-  <section class="card"><h2>Arcana</h2>${Object.entries(mage.arcana || {}).map(([name,value]) =>
-  `<div class="trait-row"><span>${escapeHtml(name)}${mage.arcanaAffinities?.[name] ? `<small class="arcana-affinity">${escapeHtml(mage.arcanaAffinities[name])}</small>` : ""}</span>${value == null ? '<span class="brand-subtitle">Unassigned</span>' : dotString(value)}</div>`).join("")}</section>
+  <section class="card"><h2>Arcana</h2>${["ruling", "common", "inferior"].map(affinity => {
+   const arcana = Object.entries(mage.arcana || {}).filter(([name]) => (mage.arcanaAffinities?.[name] || "common") === affinity);
+   if (!arcana.length) return "";
+   return `<section class="arcana-group"><h3>${affinity[0].toUpperCase() + affinity.slice(1)}</h3>${arcana.map(([name, value]) =>
+    `<div class="trait-row"><span>${escapeHtml(name)}</span>${dotString(value ?? 0)}</div>`).join("")}</section>`;
+  }).join("")}</section>
   <section class="card"><h2>Mana</h2><div id="manaTracker"></div></section>`;
  const tracker = document.getElementById("manaTracker");
  const max = mage.mana?.max;
