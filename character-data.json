@@ -20,6 +20,18 @@
         "current": null,
         "max": null
     },
+    "arcanaAffinities": {
+    "Death": "inferior",
+    "Fate": "common",
+    "Forces": "common",
+    "Life": "ruling",
+    "Matter": "common",
+    "Mind": "common",
+    "Prime": "ruling",
+    "Space": "common",
+    "Spirit": "common",
+    "Time": "common"
+},
     "arcana": {
         "Death": null,
         "Fate": null,

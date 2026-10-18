@@ -75,3 +75,7 @@ The catalog starts empty pending his spell choices.
 
 Serve the repository through PHP as before; JSON fetches require an HTTP server.
 Include `spells.html`, `spells.js`, and `spells.json` in deployments.
+
+`character.mage.arcanaAffinities` records each Arcanum as `ruling`, `common`, or
+`inferior`, separately from its rating. Rory currently has Life and Prime as ruling,
+Death as inferior, and all remaining Arcana as common.

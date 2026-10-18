@@ -26,10 +26,10 @@
 			<p>Loading character...</p>
 		</section>
 
-		<section class="grid mage-grid" id="mageGrid" aria-label="Mage traits"></section>
-
 		<section class="grid" id="attributesGrid"></section>
 		<section class="grid" id="skillsGrid"></section>
+
+		<section class="grid mage-grid" id="mageGrid" aria-label="Mage traits"></section>
 
 		<section class="card">
 			<h2>Advantages</h2>

@@ -508,3 +508,5 @@ button:disabled { opacity: 0.45; cursor: default; }
  .nav { grid-template-columns: repeat(4, 1fr); }
  .spell-filters, .spell-details { grid-template-columns: 1fr; }
 }
+
+.arcana-affinity { display: block; color: var(--muted); font-size: 0.75rem; text-transform: capitalize; }

@@ -457,7 +457,7 @@ function renderMage(character) {
  grid.innerHTML = `<section class="card"><h2>Mage</h2>${Object.entries(fields).map(([name,value]) =>
   `<div class="trait-row"><span>${name}</span><strong>${escapeHtml(value ?? "") || "Unassigned"}</strong></div>`).join("")}</section>
   <section class="card"><h2>Arcana</h2>${Object.entries(mage.arcana || {}).map(([name,value]) =>
-  `<div class="trait-row"><span>${escapeHtml(name)}</span>${value == null ? '<span class="brand-subtitle">Unassigned</span>' : dotString(value)}</div>`).join("")}</section>
+  `<div class="trait-row"><span>${escapeHtml(name)}${mage.arcanaAffinities?.[name] ? `<small class="arcana-affinity">${escapeHtml(mage.arcanaAffinities[name])}</small>` : ""}</span>${value == null ? '<span class="brand-subtitle">Unassigned</span>' : dotString(value)}</div>`).join("")}</section>
   <section class="card"><h2>Mana</h2><div id="manaTracker"></div></section>`;
  const tracker = document.getElementById("manaTracker");
  const max = mage.mana?.max;
