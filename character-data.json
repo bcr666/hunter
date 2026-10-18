@@ -392,6 +392,12 @@
 				"title": "Benedictions 1",
 				"notes": "Raised Benedictions from 2 to 3"
 			}
+			, {
+				"date": "2026-10-17",
+				"amount": 5,
+				"title": "Earned",
+				"notes": "Game Night"
+			}
 		]
 	}
 }
