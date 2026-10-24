@@ -68,7 +68,7 @@
 				"Computer": 1,
 				"Crafts": 3,
 				"Investigation": 1,
-				"Medicine": 0,
+				"Medicine": 2,
 				"Occult": 1,
 				"Politics": 0,
 				"Science": 1
@@ -85,10 +85,10 @@
 			},
 			"social": {
 				"Animal Ken": 0,
-				"Empathy": 0,
+				"Empathy": 1,
 				"Expression": 0,
 				"Intimidation": 2,
-				"Persuasion": 1,
+				"Persuasion": 2,
 				"Socialize": 2,
 				"Streetwise": 2,
 				"Subterfuge": 0
@@ -426,7 +426,7 @@
 			, {
 				"date": "2026-10-10",
 				"amount": -6,
-				"title": "Benedictions 1",
+				"title": "Benedictions 3",
 				"notes": "Raised Benedictions from 2 to 3"
 			}
 			, {
@@ -440,6 +440,24 @@
 				"amount": 17,
 				"title": "Refund",
 				"notes": "Refund Benedictions & Blessings"
+			}
+			, {
+				"date": "2026-10-24",
+				"amount": -9,
+				"title": "Medicinie 1 & 2",
+				"notes": "Purchased Medicine dots 1 & 2"
+			}
+			, {
+				"date": "2026-10-24",
+				"amount": -6,
+				"title": "Persuasion 2",
+				"notes": "Raised Persuasion from 1 to 2"
+			}
+			, {
+				"date": "2026-10-24",
+				"amount": -3,
+				"title": "Empathy 1",
+				"notes": "Purchased Empathy 1"
 			}
 		]
 	}
