@@ -76,7 +76,7 @@ IDs stay fixed when a display name changes. Multi-Arcanum spells appear under
 each of their Arcana filters. The Spells tab defaults to Rory’s list and can also
 show the whole catalog; search and Arcana filters work together. Missing referenced
 IDs are reported on the page. No spells or Mage ratings have been invented for Rory.
-The catalog starts empty pending his spell choices.
+The catalog includes summaries of Healing Heart and Harm Spirit with first-edition book references.
 
 Serve the repository through PHP as before; JSON fetches require an HTTP server.
 Include `spells.html`, `spells.js`, and `spells.json` in deployments.
@@ -84,3 +84,15 @@ Include `spells.html`, `spells.js`, and `spells.json` in deployments.
 `character.mage.arcanaAffinities` records each Arcanum as `ruling`, `common`, or
 `inferior`, separately from its rating. Rory currently has Life and Prime as ruling,
 Death as inferior, and all remaining Arcana as common.
+
+
+### Rotes
+
+`character.rotes` contains objects with `name` and `dots`, like merits. Rote names
+link to matching spell IDs by lowercasing the name and replacing spaces/punctuation
+with hyphens (e.g. Healing Heart → healing-heart). An optional `spell` property
+can specify a different catalog ID. Rotes automatically appear in Rory’s spell
+list without duplicating them in `character.spells`. Sheet links open, highlight,
+and scroll to the corresponding entry on the Spells page.
+The catalog descriptions are brief summaries, not reproduced book passages.
+Rory’s custom rote dice pools can be entered later in each spell’s `dicePool` field.

@@ -1,3 +1,35 @@
 {
-	"spells": []
+  "spells": [
+    {
+      "id": "healing-heart",
+      "name": "Healing Heart",
+      "arcana": {
+        "Life": 3
+      },
+      "practice": "Perfecting",
+      "action": "Instant",
+      "duration": "Lasting",
+      "aspect": "Covert",
+      "cost": "1 Mana",
+      "range": "Touch; sensory range with Life 4",
+      "description": "Mends another human\u2019s injuries, healing one bashing or lethal wound per casting success. Higher Life ratings expand the kinds of injuries and ranges available.",
+      "notes": "Summary, not the full book text. Rory\u2019s rote dice pool is not yet assigned.",
+      "source": "Mage: The Awakening 1st edition, core rulebook, p. 186"
+    },
+    {
+      "id": "harm-spirit",
+      "name": "Harm Spirit",
+      "arcana": {
+        "Spirit": 3
+      },
+      "practice": "Fraying",
+      "action": "Instant; Resistance reduces the casting pool",
+      "duration": "Lasting",
+      "aspect": "Vulgar",
+      "cost": "No base Mana cost",
+      "description": "Attacks a spirit\u2019s Corpus, dealing lethal damage according to casting successes. The spirit must be an accessible, perceptible target; attacking across the Gauntlet requires Spirit 4.",
+      "notes": "Summary, not the full book text. Rory\u2019s rote dice pool is not yet assigned.",
+      "source": "Mage: The Awakening 1st edition, core rulebook, p. 249"
+    }
+  ]
 }

@@ -21,7 +21,7 @@ async function initSpells() {
    ids.add(spell.id);
   }
   const character = data.character;
-  const known = character.spells || [];
+  const known = [...new Set([...(character.spells || []), ...(character.rotes || []).map(getRoteSpellId)])];
   document.getElementById("spellSubtitle").textContent = `${character.name}’s spell reference`;
   document.querySelector('#spellScope option[value="character"]').textContent = `${character.name}’s spells`;
   const missing = known.filter(id => !ids.has(id));
@@ -38,9 +38,9 @@ async function initSpells() {
    document.getElementById("spellCount").textContent = `${matches.length} spell${matches.length === 1 ? "" : "s"}`;
    document.getElementById("spellList").innerHTML = matches.length ? matches.map(spell => {
     const details = {Practice: spell.practice, Action: spell.action, Duration: spell.duration,
-     Range: spell.range, Cost: spell.cost, "Primary factor": spell.primaryFactor,
+     Range: spell.range, Aspect: spell.aspect, Cost: spell.cost, "Primary factor": spell.primaryFactor,
      "Dice pool": spell.dicePool, Withstand: spell.withstand, Source: spell.source};
-    return `<article class="card spell-card"><h2>${escapeHtml(spell.name)}</h2>
+    return `<article class="card spell-card" id="spell-${escapeHtml(spell.id)}" tabindex="-1"><h2>${escapeHtml(spell.name)}</h2>
      <div class="pill-list">${Object.entries(spell.arcana).map(([name,rating]) => `<span class="pill">${escapeHtml(name)} ${escapeHtml(rating)}</span>`).join("")}</div>
      <dl class="spell-details">${Object.entries(details).filter(([,value]) => value != null && value !== "").map(([label,value]) => `<div><dt class="label">${label}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}</dl>
      <p class="spell-text">${escapeHtml(spell.description || "No description yet.")}</p>
@@ -48,7 +48,23 @@ async function initSpells() {
    }).join("") : `<section class="card"><p>${!catalog.length ? "The spell catalog is empty." : "No spells match this selection."}</p></section>`;
   }
   ["spellScope", "arcanaFilter", "spellSearch"].forEach(id => document.getElementById(id).addEventListener("input", render));
+  function openLinkedSpell() {
+   let id;
+   try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+   if (!id.startsWith("spell-")) return;
+   const spellId = id.slice(6);
+   if (!ids.has(spellId)) return;
+   document.getElementById("spellScope").value = known.includes(spellId) ? "character" : "all";
+   document.getElementById("arcanaFilter").value = "";
+   document.getElementById("spellSearch").value = "";
+   render();
+   const target = document.getElementById(id);
+   target?.focus({preventScroll: true});
+   target?.scrollIntoView?.({block: "start"});
+  }
+  window.addEventListener("hashchange", openLinkedSpell);
   render();
+  openLinkedSpell();
  } catch (error) {
   document.getElementById("spellList").textContent = `Unable to load spells: ${error.message}`;
  }

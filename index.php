@@ -101,6 +101,10 @@
 				<div id="meritsList"></div>
 			</section>
 			<section class="card">
+				<h2>Rotes</h2>
+				<div id="rotesList"></div>
+			</section>
+			<section class="card">
 				<h2>Equipment</h2>
 				<div class="pill-list" id="equipmentList"></div>
 			</section>

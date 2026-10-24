@@ -432,6 +432,10 @@ function renderCharacter(data) {
 		`)
 		.join("");
 
+ document.getElementById("rotesList").innerHTML = (c.rotes || []).length ? c.rotes.map(rote => `
+  <div class="trait-row"><a href="spells.html#spell-${encodeURIComponent(getRoteSpellId(rote))}">${escapeHtml(rote.name)}</a>${dotString(rote.dots)}</div>
+ `).join("") : '<p class="brand-subtitle">No rotes yet.</p>';
+
 	document.getElementById("equipmentList").innerHTML = renderPills(c.equipment);
 }
 
@@ -443,6 +447,10 @@ if (document.body.dataset.page === "character") loadCharacter()
 		document.getElementById("characterHero").innerHTML = `<p>${error.message}</p>`;
 	});
 
+
+function getRoteSpellId(rote) {
+ return rote.spell || rote.name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
 
 function escapeHtml(value) {
  return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));

@@ -45,6 +45,10 @@
     }
 },
 		"spells": [],
+		"rotes": [
+			{ "name": "Healing Heart", "dots": 3 },
+			{ "name": "Harm Spirit", "dots": 3 }
+		],
 		"attributes": {
 			"mental": {
 				"Intelligence": 3,
