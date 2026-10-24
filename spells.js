@@ -1,7 +1,6 @@
-function filterSpells(catalog, knownIds, scope, arcanum, query) {
+function filterSpells(catalog, arcanum, query) {
  const search = query.trim().toLowerCase();
- return catalog.filter(spell => (scope === "all" || knownIds.includes(spell.id))
-  && (!arcanum || Object.hasOwn(spell.arcana || {}, arcanum))
+ return catalog.filter(spell => (!arcanum || Object.hasOwn(spell.arcana || {}, arcanum))
   && (!search || [spell.name, spell.description, spell.practice, spell.notes].some(value => String(value || "").toLowerCase().includes(search))))
   .sort((a,b) => a.name.localeCompare(b.name));
 }
@@ -9,7 +8,14 @@ function filterSpells(catalog, knownIds, scope, arcanum, query) {
 async function initSpells() {
  try {
   const [data, response] = await Promise.all([loadCharacter(), fetch("spells.json", {cache: "no-store"})]);
-  if (!response.ok) throw new Error("Could not load spells.json");
+  if (!response.ok) {
+   const hint = response.status === 404
+    ? "The spell catalog is missing from the website. Deploy spells.json alongside spells.html."
+    : response.status === 403
+     ? "The web server is denying access to the spell catalog. Check its file permissions and server rules."
+     : "Check that the web server can serve the spell catalog.";
+   throw new Error(`Could not load spells.json (HTTP ${response.status}). ${hint}`);
+  }
   const catalog = (await response.json()).spells;
   if (!Array.isArray(catalog)) throw new Error("spells.json must contain a spells array.");
   const ids = new Set();
@@ -23,7 +29,6 @@ async function initSpells() {
   const character = data.character;
   const known = [...new Set([...(character.spells || []), ...(character.rotes || []).map(getRoteSpellId)])];
   document.getElementById("spellSubtitle").textContent = `${character.name}’s spell reference`;
-  document.querySelector('#spellScope option[value="character"]').textContent = `${character.name}’s spells`;
   const missing = known.filter(id => !ids.has(id));
   if (missing.length) {
    const warning = document.getElementById("spellWarning");
@@ -33,7 +38,7 @@ async function initSpells() {
   const arcana = [...new Set([...Object.keys(character.mage?.arcana || {}), ...catalog.flatMap(spell => Object.keys(spell.arcana))])].sort();
   document.getElementById("arcanaFilter").insertAdjacentHTML("beforeend", arcana.map(name => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join(""));
   function render() {
-   const matches = filterSpells(catalog, known, document.getElementById("spellScope").value,
+   const matches = filterSpells(catalog,
     document.getElementById("arcanaFilter").value, document.getElementById("spellSearch").value);
    document.getElementById("spellCount").textContent = `${matches.length} spell${matches.length === 1 ? "" : "s"}`;
    document.getElementById("spellList").innerHTML = matches.length ? matches.map(spell => {
@@ -47,14 +52,13 @@ async function initSpells() {
      ${spell.notes ? `<p class="spell-text brand-subtitle">${escapeHtml(spell.notes)}</p>` : ""}</article>`;
    }).join("") : `<section class="card"><p>${!catalog.length ? "The spell catalog is empty." : "No spells match this selection."}</p></section>`;
   }
-  ["spellScope", "arcanaFilter", "spellSearch"].forEach(id => document.getElementById(id).addEventListener("input", render));
+  ["arcanaFilter", "spellSearch"].forEach(id => document.getElementById(id).addEventListener("input", render));
   function openLinkedSpell() {
    let id;
    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
    if (!id.startsWith("spell-")) return;
    const spellId = id.slice(6);
    if (!ids.has(spellId)) return;
-   document.getElementById("spellScope").value = known.includes(spellId) ? "character" : "all";
    document.getElementById("arcanaFilter").value = "";
    document.getElementById("spellSearch").value = "";
    render();

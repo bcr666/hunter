@@ -11,9 +11,8 @@
       "duration": "Lasting",
       "aspect": "Covert",
       "cost": "1 Mana",
-      "range": "Touch; sensory range with Life 4",
-      "description": "Mends another human\u2019s injuries, healing one bashing or lethal wound per casting success. Higher Life ratings expand the kinds of injuries and ranges available.",
-      "notes": "Summary, not the full book text. Rory\u2019s rote dice pool is not yet assigned.",
+      "description": "The mage can heal the wounds of other humans.\n\nEach success heals one bashing or lethal Health wound (the rightmost wound on the Health chart is healed first). At this level, the mage must touch the target. With Life 4, he can cast this spell at sensory range. With Life 4, aggravated wounds can be healed, although the mage must still touch the target (he can heal aggravated wounds at sensory range with Life 5).",
+      "notes": "Mysterium Rote: Balm of Flesh\nDice Pool: Composure + Medicine + Life\n\nWhether through a potion, poultice or some other means, members of the Mysterium use this rote to mend injuries, restoring torn flesh and shattered bone. Guardians of the Veil use a version of this rote (Resolve + Medicine + Life) to remove evidence of injury by paranormal phenomena.",
       "source": "Mage: The Awakening 1st edition, core rulebook, p. 186"
     },
     {
@@ -23,12 +22,12 @@
         "Spirit": 3
       },
       "practice": "Fraying",
-      "action": "Instant; Resistance reduces the casting pool",
+      "action": "Instant; subtract target’s Resistance",
       "duration": "Lasting",
       "aspect": "Vulgar",
-      "cost": "No base Mana cost",
-      "description": "Attacks a spirit\u2019s Corpus, dealing lethal damage according to casting successes. The spirit must be an accessible, perceptible target; attacking across the Gauntlet requires Spirit 4.",
-      "notes": "Summary, not the full book text. Rory\u2019s rote dice pool is not yet assigned.",
+      "cost": "None",
+      "description": "The mage can damage a spirit’s Corpus.\n\nThe spirit must be manifested in the material realm or exist within Twilight (in which case the mage must be able to see it, using a spell such as “Gossamer Touch,” p. 247). The caster must have Spirit 4 to attack a spirit across the Gauntlet (and his spellcasting dice pool is penalized by the Gauntlet’s Strength).\n\nOne point of lethal damage is inflicted per success. With Spirit 4, the damage may be made aggravated with the expenditure of one Mana.",
+      "notes": "Adamantine Arrow Rote: Strike the Unseen\nDice Pool: Strength + Athletics + Spirit – Resistance\n\nBypassing the need for weapons to strike through the Gauntlet, or spells to draw spirits into the material world, this rote enables an Adamantine Arrow mage to attack a spirit’s ephemeral substance directly. Guardians of the Veil use the same rote when such direct methods become necessary.",
       "source": "Mage: The Awakening 1st edition, core rulebook, p. 249"
     }
   ]

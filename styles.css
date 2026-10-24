@@ -498,7 +498,8 @@ button.secondary {
 
 /* Mage sheet and spell reference */
 .mage-grid .trait-row strong { text-align: right; overflow-wrap: anywhere; }
-.spell-filters, .spell-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.spell-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.spell-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 .spell-details dd { margin: 0; }
 .spell-text { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
 button:disabled { opacity: 0.45; cursor: default; }

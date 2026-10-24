@@ -73,10 +73,9 @@ longer needed.
 This is a schema example, not a game spell. Add `"example-spell"` to
 `character.spells` in `character-data.json` to include it in Rory’s list.
 IDs stay fixed when a display name changes. Multi-Arcanum spells appear under
-each of their Arcana filters. The Spells tab defaults to Rory’s list and can also
-show the whole catalog; search and Arcana filters work together. Missing referenced
+each of their Arcana filters. The Spells tab shows the whole catalog; search and Arcana filters work together. Missing referenced
 IDs are reported on the page. No spells or Mage ratings have been invented for Rory.
-The catalog includes summaries of Healing Heart and Harm Spirit with first-edition book references.
+The catalog includes user-provided book text for Healing Heart and Harm Spirit with first-edition page references.
 
 Serve the repository through PHP as before; JSON fetches require an HTTP server.
 Include `spells.html`, `spells.js`, and `spells.json` in deployments.
@@ -94,5 +93,7 @@ with hyphens (e.g. Healing Heart → healing-heart). An optional `spell` propert
 can specify a different catalog ID. Rotes automatically appear in Rory’s spell
 list without duplicating them in `character.spells`. Sheet links open, highlight,
 and scroll to the corresponding entry on the Spells page.
-The catalog descriptions are brief summaries, not reproduced book passages.
-Rory’s custom rote dice pools can be entered later in each spell’s `dicePool` field.
+The catalog preserves user-provided spell wording, with printed line wrapping removed.
+The supplied order-specific rote descriptions and dice pools appear in the notes;
+these do not assign Rory to an Order. Rory’s custom rote dice pools can be entered
+later in each spell’s `dicePool` field.
