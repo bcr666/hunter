@@ -37,10 +37,15 @@ equipment, notes, and XP are preserved. `character.mage` holds Shadow Name, Path
 Order, Legacy, Cabal, Gnosis, Wisdom, Mana, and all ten Arcana. Undecided ratings
 are `null` and undecided text is empty. Zero means an assigned rating of zero.
 Set Wisdom explicitly; the old Morality value is retained in the data for reference.
-Mana capacity is explicit rather than calculated so the sheet does not assume an edition.
-Once `mana.max` is assigned, Spend/Restore controls track current Mana in this browser,
-starting from `mana.current` (or full if omitted). As with Health and Willpower,
-local tracker changes do not modify the JSON file.
+Maximum Mana is calculated from Gnosis using the first-edition Effects of Gnosis
+table (core rulebook, p. 76): Gnosis 1–10 gives 10, 11, 12, 13, 14, 15, 20, 30,
+50, and 100 Mana respectively. Set `character.mage.gnosis` to an integer from 1 to 10
+to display the tracker. An unassigned Gnosis displays a prompt instead.
+Click a Mana box to set the current amount; click the last filled box again to
+spend one, just like Willpower. Mana is saved in this browser, starting from
+`mana.current` (or full if null/omitted). Saved amounts are capped at the current
+maximum. Local tracker changes do not modify the JSON file. `mana.max` is no
+longer needed.
 
 ### Spell catalog
 

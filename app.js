@@ -448,6 +448,12 @@ function escapeHtml(value) {
  return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
 
+// Mage: The Awakening 1e, Effects of Gnosis table (p. 76).
+function calculateMaxMana(gnosis) {
+ const capacities = [0, 10, 11, 12, 13, 14, 15, 20, 30, 50, 100];
+ return Number.isInteger(gnosis) && gnosis >= 1 && gnosis <= 10 ? capacities[gnosis] : null;
+}
+
 function renderMage(character) {
  const mage = character.mage;
  const grid = document.getElementById("mageGrid");
@@ -464,28 +470,35 @@ function renderMage(character) {
   }).join("")}</section>
   <section class="card"><h2>Mana</h2><div id="manaTracker"></div></section>`;
  const tracker = document.getElementById("manaTracker");
- const max = mage.mana?.max;
+ const max = calculateMaxMana(mage.gnosis);
  if (!Number.isInteger(max) || max < 0) {
-  tracker.textContent = "Mana capacity has not been assigned.";
+  tracker.textContent = "Assign Gnosis (1–10) to calculate maximum Mana.";
   return;
  }
  const key = `mana-${character.name}`;
  let saved;
  try { saved = localStorage.getItem(key); } catch { saved = null; }
- let current = Math.max(0, Math.min(max, Number(saved ?? mage.mana.current ?? max) || 0));
- tracker.innerHTML = `<p class="mana-summary" id="manaSummary" aria-live="polite"></p>
-  <div class="form-actions"><button type="button" id="spendMana">Spend 1</button><button type="button" id="restoreMana">Restore 1</button></div>`;
+ const initial = Number(saved ?? mage.mana?.current ?? max);
+ let current = Number.isFinite(initial) ? Math.max(0, Math.min(max, Math.trunc(initial))) : max;
+ tracker.innerHTML = `<p class="willpower-summary" id="manaSummary" aria-live="polite"></p>
+  <div class="willpower-bar" id="manaBar" role="group" aria-label="Current Mana"></div>`;
  const render = () => {
   document.getElementById("manaSummary").textContent = `${current} / ${max}`;
-  document.getElementById("spendMana").disabled = current === 0;
-  document.getElementById("restoreMana").disabled = current === max;
+  const bar = document.getElementById("manaBar");
+  bar.innerHTML = Array.from({length: max}, (_, index) => {
+   const value = index + 1;
+   return `<button type="button" class="willpower-box ${value <= current ? "filled" : "empty"}"
+    data-mana="${value}" aria-label="Set Mana to ${value}" aria-pressed="${value <= current}"></button>`;
+  }).join("");
+  bar.querySelectorAll("[data-mana]").forEach(button => {
+   button.addEventListener("click", () => {
+    const value = Number(button.dataset.mana);
+    current = current === value ? value - 1 : value;
+    try { localStorage.setItem(key, String(current)); } catch (error) { console.warn("Could not save Mana.", error); }
+    render();
+    document.querySelector(`[data-mana="${value}"]`).focus();
+   });
+  });
  };
- const change = amount => {
-  current = Math.max(0, Math.min(max, current + amount));
-  try { localStorage.setItem(key, String(current)); } catch (error) { console.warn("Could not save Mana.", error); }
-  render();
- };
- document.getElementById("spendMana").onclick = () => change(-1);
- document.getElementById("restoreMana").onclick = () => change(1);
  render();
 }

@@ -14,11 +14,10 @@
     "order": "",
     "legacy": "",
     "cabal": "",
-    "gnosis": null,
-    "wisdom": null,
+    "gnosis": 3,
+    "wisdom": 6,
     "mana": {
-        "current": null,
-        "max": null
+        "current": 7
     },
     "arcanaAffinities": {
     "Death": "inferior",
@@ -33,15 +32,15 @@
     "Time": "common"
 },
     "arcana": {
-        "Death": 0,
-        "Fate": 0,
+        "Death": 3,
+        "Fate": 1,
         "Forces": 0,
-        "Life": 0,
+        "Life": 4,
         "Matter": 0,
-        "Mind": 0,
+        "Mind": 2,
         "Prime": 0,
         "Space": 0,
-        "Spirit": 0,
+        "Spirit": 5,
         "Time": 0
     }
 },
@@ -435,6 +434,12 @@
 				"amount": 5,
 				"title": "Earned",
 				"notes": "Game Night"
+			}
+			, {
+				"date": "2026-10-17",
+				"amount": 17,
+				"title": "Refund",
+				"notes": "Refund Benedictions & Blessings"
 			}
 		]
 	}
