@@ -20,15 +20,15 @@
         "current": 7
     },
     "arcanaAffinities": {
-    "Death": "inferior",
+    "Death": "common",
     "Fate": "common",
     "Forces": "common",
     "Life": "ruling",
     "Matter": "common",
     "Mind": "common",
-    "Prime": "ruling",
+    "Prime": "inferior",
     "Space": "common",
-    "Spirit": "common",
+    "Spirit": "ruling",
     "Time": "common"
 },
     "arcana": {
