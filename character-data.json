@@ -139,10 +139,6 @@
 				"dots": 2
 			},
 			{
-				"name": "Benedictions",
-				"dots": 3
-			},
-			{
 				"name": "Fast Reflexes",
 				"dots": 2
 			},
@@ -153,10 +149,6 @@
 			{
 				"name": "Resources",
 				"dots": 3
-			},
-			{
-				"name": "Safehouse",
-				"dots": 1
 			},
 			{
 				"name": "Status (Malleus Maleficarum)",
@@ -441,9 +433,9 @@
 			}
 			, {
 				"date": "2026-10-17",
-				"amount": 17,
+				"amount": 19,
 				"title": "Refund",
-				"notes": "Refund Benedictions & Blessings"
+				"notes": "Refund Benedictions & Blessings & Safehouse"
 			}
 			, {
 				"date": "2026-10-24",
