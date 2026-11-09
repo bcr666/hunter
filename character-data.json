@@ -455,6 +455,24 @@
 				"title": "Empathy 1",
 				"notes": "Purchased Empathy 1"
 			}
+			, {
+				"date": "2026-10-24",
+				"amount": 5,
+				"title": "Earned",
+				"notes": "Game Night"
+			}
+			, {
+				"date": "2026-10-31",
+				"amount": 5,
+				"title": "Earned",
+				"notes": "Game Night"
+			}
+			, {
+				"date": "2026-11-07",
+				"amount": 5,
+				"title": "Earned",
+				"notes": "Game Night"
+			}
 		]
 	}
 }
