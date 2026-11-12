@@ -33,7 +33,7 @@
 },
     "arcana": {
         "Death": 3,
-        "Fate": 1,
+        "Fate": 2,
         "Forces": 0,
         "Life": 4,
         "Matter": 0,
@@ -473,6 +473,11 @@
 				"title": "Earned",
 				"notes": "Game Night"
 			}
-		]
+			, {
+				"date": "2026-11-07",
+				"amount": -14,
+				"title": "Fate 2",
+				"notes": "Raised Fate from 1 to 2"
+			}		]
 	}
 }
